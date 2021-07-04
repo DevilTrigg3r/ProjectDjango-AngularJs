@@ -1,0 +1,319 @@
+<br>
+<div class="col-2">
+    <input type="text" name="filterspecies" placeholder="Insert the scientific name" [(ngModel)]="filterspecies">
+</div>
+<div class="col-2">
+    <input type="text" name="filtercolloquial" placeholder="Search colloquial name" [(ngModel)]="filtercolloquial">
+</div>
+<div>
+    <input type="text" name="filtertaxon" placeholder="Search Taxon ID" [(ngModel)]="filtertaxon">
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead class="tr-head">
+            <tr>
+                <th>ID specie</th>
+                <th>Scientific Name</th>
+                <th>Colloquial Name</th>
+                <th>Taxon ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let specie of SpeciesList | filterspecie:filterspecies | filterTaxon:filtertaxon | filterColloquial:filtercolloquial |paginate: {itemsPerPage: 7, currentPage: page}">
+                <td>{{specie.specie_id}}</td>
+                <td>{{specie.scientific_name}}</td>
+                <td>{{specie.colloquial_name}}</td>
+                <td class="margin-taxon">{{specie.taxon_id}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<div>
+    <h1>Species of the API</h1>
+</div>
+<div class="info">
+    <div>
+        <h1>Canis lupus familiaris</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/dog1.jpeg" alt="Image of users">
+        </span>
+        <p>The domestic dog (Canis familiaris or Canis lupus familiaris) is a domesticated descendant of the wolf. The
+            dog derived from an ancient, extinct wolf, with the modern grey wolf... <a
+                href="https://en.wikipedia.org/wiki/Dog">Keep reading.</a> </p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9615">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Canis+lupus+familiaris">GeneralNCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Pan paniscus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/bonobo.jpeg" alt="Image of users">
+        </span>
+        <p>The bonobo (Pan paniscus), also historically called the pygmy chimpanzee and less often, the dwarf or gracile
+            chimpanzee, is an endangered great ape and one of the two species making up the genus Pan.. <a
+                href="https://en.wikipedia.org/wiki/Bonobo">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9597">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=pan%20paniscus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Dasypodidae</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/armadillo.jpg" alt="Image of users">
+        </span>
+        <p>Armadillos (meaning "little armored ones" in Spanish) are New World placental mammals in the order Cingulata.
+            The Chlamyphoridae and Dasypodidae are the only surviving families in the order, which is part of the
+            superorder Xenarthra... <a href="https://en.wikipedia.org/wiki/Armadillo">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9359">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=dasypodidae">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Felis catus </h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/cat.jpeg" alt="Image of users">
+        </span>
+        <p>The cat (Felis catus) is a domestic species of small carnivorous mammal.It is the only domesticated
+            species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild
+            members of the family... <a href="https://en.wikipedia.org/wiki/Cat">Keep reading.</a></p>
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9685">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=felis+catus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Oryctolagus cuniculus
+        </h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/rabbit-3.jpg" alt="Image of users">
+        </span>
+        <p>Rabbits are small mammals in the family Leporidae (along with the hare) of the order Lagomorpha (along with
+            the pika). Oryctolagus cuniculus includes the European rabbit species and its descendants, the world's 305
+            breeds of domestic rabbit.... <a href="https://en.wikipedia.org/wiki/Rabbit">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9986">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Oryctolagus%20cuniculus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Iguana iguana</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/iguana1.jpg" alt="Image of users">
+        </span>
+        <p>The green iguana (Iguana iguana), also known as the American iguana or the common green iguana, is a large,
+            arboreal, mostly herbivorous species of lizard of the genus Iguana. Usually, this animal is simply called
+            the iguana. The green iguana ranges over a large geographic area... <a
+                href="https://en.wikipedia.org/wiki/iguana_iguana">Keep reading.</a></p>
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=8517">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=iguana+iguana">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Mus musculus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/Mouse-on-branch-1024x535.jpg" alt="Image of users">
+        </span>
+        <p>The house mouse (Mus musculus) is a small mammal of the order Rodentia, characteristically having a pointed
+            snout, large rounded ears, and a long and hairy tail. It is one of the most abundant species of the genus
+            Mus. Although a wild animal... <a href="https://en.wikipedia.org/wiki/House_mouse">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=mus%20musculus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Ursus sp</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/ursus.jpg" alt="Image of users">
+        </span>
+        <p>Bears are carnivoran mammals of the family Ursidae. They are classified as caniforms, or doglike carnivorans.
+            Although only eight species of bears are extant, they are widespread, appearing in a wide variety of
+            habitats... <a href="https://en.wikipedia.org/wiki/Bear">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9641">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Ursidae">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Gallus gallus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/chickens.jpg" alt="Image of users">
+        </span>
+        <p>The chicken (Gallus gallus domesticus), a subspecies of the red junglefowl, is a type of domesticated fowl,
+            originally from Southeastern Asia. Rooster or cock is a term for an adult male bird. A younger male may be
+            called a cockerel... <a href="https://en.wikipedia.org/wiki/Chicken">Keep
+                reading.</a></p>
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9031">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Gallus%20Gallus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Melopsittacus undulatus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/budgerigars.jpg" alt="Image of users">
+        </span>
+        <p>The budgerigar (Melopsittacus undulatus) is a small, long-tailed, seed-eating parrot usually
+            nicknamed the budgie, or in American English, the parakeet. Budgies are the only species in the
+            genus Melopsittacus... <a href="https://en.wikipedia.org/wiki/Budgerigar">Keep reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=13146">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Melosittacus%20undulatus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Ailuropoda melanoleuca</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/panda1.jpg" alt="Image of users">
+        </span>
+        <p>The giant panda (Ailuropoda melanoleuca), also known as the panda bear
+            (or simply the panda), is a bear native to South Central China.It is characterised by its bold
+            black-and-white coat and rotund body.... <a href="https://en.wikipedia.org/wiki/Giant_panda">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=info&id=9646">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Ailuropoda%20melanoleuca">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Equus caballus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/horse.jpg" alt="Image of users">
+        </span>
+        <p>The horse (Equus ferus caballus) is a domesticated one-toed hoofed mammal. It belongs to the taxonomic
+            family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to
+            55 million years from a small multi-toed creature... <a href="https://en.wikipedia.org/wiki/Horse">Keep
+                reading.</a></p>
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9796">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=equus%20caballus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Sciurus niger</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/squirrel.jpg" alt="Image of users">
+        </span>
+        <p>The fox squirrel (Sciurus niger), also known as the eastern fox squirrel or Bryant's fox squirrel, is the
+            largest species of tree squirrel native to North America. Despite the differences in size and coloration, it
+            is sometimes mistaken for American red squirrels ... <a
+                href="https://en.wikipedia.org/wiki/Fox_squirrel">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=34861">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Sciurus%20niger">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Bos taurus</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/cow.jpg" alt="Image of users">
+        </span>
+        <p>Cattle, or cows (female) and bulls (male), are large domesticated cloven-hooved herbivores. They are a
+            prominent modern member of the subfamily Bovinae, are the most widespread species of the genus Bos, and are
+            most commonly classified collectively as Bos taurus... <a href="https://en.wikipedia.org/wiki/Cattle">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9913">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Bos%20taurus">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Danio rerio</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/daniorerio.jpg" alt="Image of users">
+        </span>
+        <p>The zebrafish (Danio rerio) is a freshwater fish belonging to the minnow family (Cyprinidae) of the order
+            Cypriniformes. Native to South Asia, it is a popular aquarium fish, frequently sold under the trade name
+            zebra danio (and thus often called a "tropical fish"... <a
+                href="https://en.wikipedia.org/wiki/Danio_rerio">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=7955">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Danio%20rerio">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Pan troglodytes</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/pantogrolydtes.jpeg" alt="Image of users">
+        </span>
+        <p>The chimpanzee (Pan troglodytes), also known as the common chimpanzee, robust chimpanzee, or simply chimp, is
+            a species of great ape native to the forest and savannah of tropical Africa. It has four confirmed
+            subspecies and a fifth proposed subspecies.... <a href="https://en.wikipedia.org/wiki/Pan_troglodytes">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9598">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Pan%20troglodytes">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Homo sapiens</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/human.jpg" alt="Image of users">
+        </span>
+        <p>Humans (Homo sapiens) are the most populous and widespread species of primates, characterized by bipedality
+            and large complex brains enabling the development of advanced tools, culture and language... <a
+                href="https://en.wikipedia.org/wiki/Homo_sapiens">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=9606">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=Homo%20sapiens">General NCBI</a>
+        </span>
+    </div>
+    <div>
+        <h1>Tetraodontidae</h1>
+        <hr>
+        <span class="image-filter">
+            <img src="/assets/images/tetradontidae.jpeg" alt="Image of users">
+        </span>
+        <p>Tetraodontidae is a family of primarily marine and estuarine fish of the order Tetraodontiformes. The family
+            includes many familiar species variously called pufferfish, puffers... <a
+                href="https://en.wikipedia.org/wiki/tetraodontidae">Keep
+                reading.</a></p>
+
+        <span class="links">
+            <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=31031">NCBI Taxonomy</a>
+            <a href="https://www.ncbi.nlm.nih.gov/search/all/?term=tetraodontidae">General NCBI</a>
+        </span>
+    </div>
+
+
+</div>

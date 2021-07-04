@@ -1,0 +1,88 @@
+<h2>NCBI INSIGHTS</h2>
+<div class="margin-cube">
+    <a href="{{Insights[0]}}">June 2 Webinar viewers</a>
+    <p>We have just launched GaPTools, a stand-alone data validation tool for NCBI’s database of Genotype and Phenotype
+        (dbGaP) submissions. You can use GaPTools to validate your dbGaP submissions or submissions to other genomic
+        data repositories. GaPTools checks for common data inconsistency and integrity issues and validates
+        subject-sample ID mapping, subject consents, data dictionaries, and phenotype and genotype data. GaPTools is
+        available as a docker image on Docker Hub.</p>
+</div>
+
+<div><a href="{{Insights[1]}}">Magic-BLAST version 1.6.0 is here!
+    </a>
+    <p>Join us on June 2, 2021 at 12PM eastern time to learn how to how to upload and display your own genomic data in
+        the
+        context of annotated genome assemblies. You will use the Genome Data Viewer and the Sequence viewer to visualize
+        your own uploaded data (indexed BAM, VCF, BED, wig, GFF formats), data from public track hubs, and your BLAST
+        and
+        Primer-BLAST results. You will also learn to take advantage of features of the viewers including optimizing
+        display
+        settings, sharing a view with collaborators, exporting images, and downloading genes or other features in the
+        view.
+    </p>
+</div>
+<div>
+    <a href="{{Insights[2]}}">VGP-NCBI</a>
+    <p>We’ve just released a new version (1.6.0) of Magic-BLAST, the BLAST-based next-gen alignment tool, with these
+        improvements:
+        Usage reporting — you can help improve Magic-BLAST by sharing limited information about your search. The BLAST
+        User
+        Manual has details on the information collected, how it is used, and how to opt-out.</p>
+</div>
+<div>
+    <a href="{{Insights[4]}}">Assemble annotate prokayotic genomes webrapt</a>
+    <p>Do you need an easy way to analyze a bacterium you just isolated? The latest version of NCBI’s Read assembly and
+        Annotation Pipeline Tool (RAPT) is a pilot web service for the assembly and gene annotation of public or private
+        Illumina genomic reads sequenced from bacterial or archaeal isolates.</p>
+</div>
+<div>
+    <a href="{{Insights[5]}}">May 19 Webinar: Using the new web RAPT service to assemble and annotate prokaryotic
+        genomes</a>
+    <p>Join us on May 19, 2021 at 12PM eastern time to learn how to use the new RAPT pilot service to assemble and
+        annotate public or private Illumina genomic reads sequenced from bacterial or archaeal isolates at the click of
+        a button. RAPT consists of two major components, the genome assembler SKESA and the Prokaryotic Genome
+        Annotation Pipeline (PGAP), and produces an annotated genome of quality comparable to RefSeq in a couple of
+        hours.</p>
+</div>
+<div>
+    <a href="{{Insights[6]}}">A dedicated SARS-CoV-2 BioSample submission package in the NCBI Submission Portal</a>
+    <p>During the COVID-19 pandemic, it is critical to collect descriptive information about the provenance and
+        attributes of SARS-CoV-2 genomic samples so that the course of the virus may be tracked and analyzed. The NCBI
+        Submission Portal now includes a dedicated BioSample submission package to help further improve the quality and
+        richness of submitted SARS-CoV-2 sample metadata.</p>
+</div>
+<div>
+    <a href="{{Insights[7]}}">NCBI at CSHL Biology of Genomes, May 11 – 14, 2021</a>
+    <p>NCBI staff will be presenting virtual posters at the Cold Spring Harbor Laboratory Biology of Genomes Meeting,
+        May 11
+        -14, 2021. The posters will cover the following topics: 1) a cloud-ready suite of tools (PGAP, RAPT , and SKESA)
+        for
+        assembling and annotating prokaryotic genomes, 2) Datasets — a new set of services for downloading genome
+        assemblies
+        and annotations, and 3) updates on NCBI RefSeq eukaryotic genome annotation, and the Genome Data Viewer (GDV).
+        Read
+        more below for the full abstracts.</p>
+</div>
+<div>
+    <a href="{{Insights[8]}}">Add Preprint Citations in My Bibliography</a>
+    <p>The National Institutes of Health encourages investigators to post preprints to public repositories in order to
+        speed
+        the dissemination and enhance the rigor of their work. This video demonstrates how to add preprint citations to
+        My
+        Bibliography.</p>
+</div>
+
+
+<div class="container text-center mt-5">
+    <div class="card">
+        <div class="container text-center mt-2">
+            <div class="row">
+                <div *ngFor="let v of videos">
+                    <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="200" [width]="300">
+
+                    </youtube-player>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

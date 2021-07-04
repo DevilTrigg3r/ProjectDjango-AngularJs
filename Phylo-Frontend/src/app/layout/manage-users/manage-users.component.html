@@ -1,0 +1,29 @@
+<p>manage-users works!</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Mail</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Role</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.user_id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.role}}</td>
+            <td><button type="submit" (click)="delete(user.user_id)">Delete</button></td>
+            <td><button type="submit" (click)="delete(user.user_id)">Delete</button></td>
+        </tr>
+    
+    </tbody>
+    <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+    </table>

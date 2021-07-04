@@ -1,0 +1,7 @@
+<p class="alert alert-danger" role="alert" *ngIf="markerQueryError || !sessionStatus; else loadMarkers">Error cannot connect to the DB</p>
+
+<ng-template #loadMarkers>
+    <app-map-view id="map-frame" [markersList]="markersList" [species]="species"></app-map-view>
+    <app-data-visualization [markersList]="markersList"></app-data-visualization>
+    <app-show-usr-markers [markersList]="markersList" [markerQueryStatus]="markerQueryStatus" [species]="species"></app-show-usr-markers>
+</ng-template>

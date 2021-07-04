@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<!-- <header id='header'>
+    <nav id='nav-bar'>
+        <h1 id='logo'>Phylogenetic-trees</h1>
+    </nav>
+</header> -->
+<section id='hero'>
+    <div>
+        <h2>Feed your Knowledge</h2>
+        <p>
+            A phylogenetic tree (also phylogeny or evolutionary tree) is a branching diagram or a tree showing the
+            evolutionary relationships among various biological species or other entities based upon similarities and
+            differences in their physical or genetic characteristics. All life on Earth is part of a single phylogenetic
+            tree, indicating common ancestry.
+        </p>
+        <br>
+        <button class='button-right' onclick="location.href='https://en.wikipedia.org/wiki/Phylogenetics'">Learn
+            More</button>
+    </div>
+</section>
+<section id='download'>
+    <div>
+        <h3>How Phylogenetic-trees are made </h3>
+        <p>
+            To understand better, here it is a quick introduction to how Phylogenetics trees works.
+            <br><br><br>
+            <iframe id="video" width="560" height="320" src="https://www.youtube.com/embed/6_XMKmFQ_w8"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </p>
+    </div>
+</section>
+<section id='cardsContainer'>
+    <br>
+    <div id='cards'>
+        <div class='bla-bla-bla'>
+
+            <body>
+                <div>
+                    <form>
+                        <label>Radial layout</label>
+                        <input type="checkbox" id="layout" checked="">
+                    </form>
+                </div>
+
+                <svg id="tree_display" width="599.1096896223551" height="636.1096896223551"></svg>
+
+                <script>
+                    d3.text("https://raw.githubusercontent.com/DevilTrigg3r/ADN_Validate/main/turtle_tree.nwk", function (error, newick) {
+                        var tree = d3.layout.phylotree()
+                            .options({
+                                brush: false,
+                                zoom: true,
+                                "show-scale": false
+                            })
+                            .svg(d3.select("#tree_display"))
+                            .radial(true);
+
+                        tree(d3.layout.newick_parser(newick))
+                            .layout();
+
+                        $("#layout").on("click", function (e) {
+                            tree.radial($(this).prop("checked")).placenodes().update();
+                        });
+                    });
+                    // for syntax highlighting
+                    hljs.initHighlightingOnLoad();
+                </script>
+                <ul id="d3_layout_phylotree_context_menu" class="dropdown-menu" role="menu" style="display: none;"></ul>
+            </body>
+        </div>
+        <div id='card-left'>
+            <div>
+                <input type="text" name="taxonfilter" placeholder="Introduce your taxon desire: "
+                    [(ngModel)]="taxonfilter">
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID specie</th>
+                        <th>Scientific Name</th>
+                        <th>Colloquial Name</th>
+                        <th>Taxon ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr-body"
+                        *ngFor="let specie of SpeciesList | taxonFilter : taxonfilter | paginate: {itemsPerPage: 7, currentPage: currentPage}"
+                        (click)="onSelect(specie.specie_id, specie.scientific_name)">
+                        <td>{{specie.specie_id}}</td>
+                        <td>{{specie.scientific_name}}</td>
+                        <td>{{specie.colloquial_name}}</td>
+                        <td class="margin-taxon">{{specie.taxon_id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+        <div id='card-left'>
+            <h3>Do you want to compare with a new one?</h3>
+            <br>
+            <div>
+                <form #SequenceForm="ngForm" (ngSubmit)="UploadSequenceToBackEnd(SequenceForm.value)">
+                    <div class="form-group row">
+                        <label for="acc_number" class="col-2 col-form-label">Acc_number</label>
+                        <input ngModel type="text" class="form-control" name="acc_number" id="acc_number"
+                            placeholder="Enter Accession number">
+                    </div>
+                    <div class="form-group row">
+                        <label for="gene" class="col-2 col-form-label">Gene</label>
+                        <input ngModel type="text" class="form-control" name="gene" id="gene" placeholder="Enter gene">
+                    </div>
+                    <div class="form-group row">
+                        <label for="sequence" class="col-2 col-form-label">Sequence</label>
+                        <textarea ngModel name="sequence" placeholder="Enter sequence"></textarea>
+                    </div>
+                    <button type="submit" class="popup" (click)="mostrarMensaje()">Upload Sequence
+                        <span class="popuptext" id="myPopup">Sequence Added Succesfully!</span>
+                    </button>
+                </form>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div *ngIf="ShowGenBank" id="card-gb">
+
+            {{GenbankArray[FillDIv-1].Id}}
+            {{GenbankArray[FillDIv-1].Description}}
+            {{GenbankArray[FillDIv-1].Seq}}
+
+        </div>
+    </div>
+</section>

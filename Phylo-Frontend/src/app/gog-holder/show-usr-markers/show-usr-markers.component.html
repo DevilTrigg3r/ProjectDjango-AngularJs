@@ -1,0 +1,138 @@
+<div *ngFor="let specie of species">
+  <p class="alert alert-warning" role="alert" *ngIf="!specie.finished">Retriveving markers of {{specie.scientific_name}}, please wait...</p>
+  <div class="alert alert-info alert-dismissible fade show" role="alert" *ngIf="specie.empty">
+    <p class="no-padding">No markers found for the {{specie.scientific_name}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <p class="alert alert-danger" role="alert" *ngIf="specie.errors">Error querying markers of {{specie.scientific_name}}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+</div>
+<input name="spoilerbtn" name="spoilerbtn" class="spoilerbutton btn btn-outline-primary" type="button" value="Spoiler filters"  
+onclick="this.value=this.value=='Spoiler filters'?'Hide filters':'Spoiler filters';">
+<div class="spoiler"><div>
+    <section>
+      <form #markersFilterFrom="" novalidate>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td><h5>Filter by identification</h5></td>
+                <td><input type="text" name="nameF" [(ngModel)]="countryCodeFilter" (ngModelChange)="filterMarkers()"></td>
+              </tr>
+              <tr>
+                <td><h5>Filter by country code</h5></td>
+                <td><input type="text" name="nameF" [(ngModel)]="countryCodeFilter" (ngModelChange)="filterMarkers()"></td>
+              </tr>
+              <tr>
+                <td><h5>Filter by date after</h5></td>
+                <td><input type="date" name="dateF" [(ngModel)]="dateAfterFilter" (ngModelChange)="filterMarkers()"></td>
+              </tr>
+              <tr>
+                <td><h5>Filter by date before</h5></td>
+                <td><input type="date" name="dateF" [(ngModel)]="dateBeforeFilter" (ngModelChange)="filterMarkers()"></td>
+              </tr>
+              <tr>
+                <td><h5>Select by specie scientific name</h5></td>
+                <td>
+                  <input list="sciNames" name="sciName" id="sciName" [(ngModel)]="sciNameFilter" (ngModelChange)="filterMarkers()">
+                  <datalist id="sciNames" >
+                      <option value="{{specie.scientific_name}}" *ngFor="let specie of species">
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <td><h5>Select by specie colloquial name</h5></td>
+                <td>
+                  <input list="collNames" name="colName" id="colName" [(ngModel)]="collNameFilter" (ngModelChange)="filterMarkers()">
+                  <datalist id="collNames" >
+                      <option value="{{specie.colloquial_name}}" *ngFor="let specie of species">
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <td><h5>Only your markers</h5></td>
+                <td>
+                  <input type="checkbox" name="own" id="own" [(ngModel)]="autorshipFilter" (ngModelChange)="filterMarkers()">
+                </td>
+              </tr>
+              <tr>
+                <td><h5>Items per page</h5></td>
+                <td><input type="number" name="itemsPerPage" [(ngModel)]="itemsPerPage"></td>
+              </tr>
+              <tr>
+                <td><h5>Number of markers listed</h5></td>
+                <td><b>{{markersNumber}}</b></td>
+              </tr>
+            </tbody>
+          </table>
+      </form>
+    </section>
+  </div>
+</div>
+<section class="responsive-table">
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identification</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Country code</th>
+            <th>State</th>
+            <th>Scientific name</th>
+            <th>Colloquial name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let marker of filteredMarkersList | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}">
+            <td>{{marker.identification_id}}</td>
+            <td>{{marker.latitude}}</td>
+            <td>{{marker.longitude}}</td>
+            <td>{{marker.date}}</td>
+            <td>{{marker.hour}}</td>
+            <td>{{marker.country}}</td>
+            <td>{{marker.state}}</td>
+            <td>{{marker.scientific_name}}</td>
+            <td>{{marker.colloquial_name}}</td>
+            <ng-container *ngIf="verifySession().user_id == marker.user_id; else emptyTds">
+              <td><button type="submit" class="btn btn-outline-primary"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" 
+                data-backdrop="static" data-keyboard="false"
+                (click)="editClick(marker)"><i class="far fa-edit"></i> Edit</button></td>
+              <td><button type="submit" class="btn btn-outline-danger" (click)="deleteMarker(marker)"><i class="far fa-trash-alt"></i> Delete</button></td>
+            </ng-container>
+            <ng-template #emptyTds>
+              <td></td>
+              <td></td>
+            </ng-template>
+        </tr>
+    </tbody>
+  </table>
+</section>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+(click)="addMarkerClick()">
+  Add marker
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click)="closeMarkerClick()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-usr-markers [targetMarker]="targetMarker" *ngIf="showAddEditMarker"></app-add-edit-usr-markers>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #closeButton class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="closeMarkerClick()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

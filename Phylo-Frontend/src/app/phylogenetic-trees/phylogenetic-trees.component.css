@@ -1,0 +1,452 @@
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Poppins:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #7b7cc7;
+  font-size: 2rem;
+  font-weight: 500;
+}
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 4rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 4rem;
+}
+p {
+  font-size: 2rem;
+}
+td {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  vertical-align: top;
+}
+em {
+  font-family: 'Cabin Sketch', cursive;
+  color: #52b2cf;
+}
+li {
+  font-size: 1.8rem;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+button {
+  padding: 1rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border-radius: 1rem;
+  font-variant-caps: all-petite-caps;
+}
+button:hover {
+  background: #7b7cc7;
+  color: #fff;
+}
+#header {
+  background: #7b7cc7;
+  color: #fff;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+/* nav {
+  min-height: 10vh;
+  padding: 1rem;
+  display: flex;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #212121;
+}
+nav ul {
+  display: flex;
+  flex: 1 1 40rem;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  font-variant-caps: all-small-caps;
+}
+nav a:hover {
+  color: #fab700;
+}
+
+nav img {
+  max-height: 8vh;
+} */
+
+#hero {
+  min-height: 90vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.815), transparent),
+    url(https://www.sib.swiss/images/sib/7-about-us/media/news.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0vw 15vw;
+}
+#header h1 {
+  width: 15vw;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 2.2rem;
+}
+#hero h2 {
+  padding: 3rem;
+}
+#hero p {
+  text-align: justify;
+}
+#hero button {
+  width: 18vw;
+  font-weight: 500;
+  padding: 1.2rem 1.8rem;
+  background: #fff;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border-radius: 0.2rem;
+  font-variant-caps: all-petite-caps;
+}
+#hero button:hover {
+  background: #212121;
+  color: #fff;
+}
+#hero .button-right {
+  background: #fff;
+  color: #212121;
+  border: solid 0.17rem;
+}
+#hero .button-right:hover {
+  background: #212121;
+  color: #fff;
+}
+
+
+/**/
+#download {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.815), transparent),
+    url(https://cdn.suwalls.com/wallpapers/digital-art/leaves-under-the-microscope-53615-1920x1200.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0vw 15vw;
+}
+#download h3 {
+  padding: 3rem 3rem 3rem 0rem;
+}
+#download p {
+  text-align: left;
+}
+#download button {
+  width: 15vw;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+#download .fab {
+  font-size: 3rem;
+  padding-right: 1rem;
+}
+
+
+#cardsContainer {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+}
+#cardsContainer h3 {
+  padding: 6rem 0rem 1rem 0rem;
+}
+#cards {
+  width: 90vw;
+  font-weight: 500;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#card-left {
+  width: 35vw;
+  background: #fff;
+  color: #212121;
+  border: solid 0.4rem;
+  border-radius: 0.4rem;
+  border-color: #212121;
+  margin: 5vw;
+  padding: 5vw 2vw;
+  opacity: 0.8;
+  text-align: center;
+  align-items: center;
+}
+#card-left:hover {
+  opacity: 1;
+}
+#cards h3 {
+  padding: 0rem;
+}
+.bla-bla-bla {
+  text-align: left;
+  align-items: center;
+  line-height: 3.5rem;
+  padding: 4rem;
+  width: auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#video {
+  width: 60vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0.3;
+}
+#video:hover {
+  opacity: 1;
+}
+#cards button {
+  width: 20vw;
+  border: solid 0.17rem;
+  border-radius: 0.2rem;
+  margin: 2rem 0rem 3rem 0rem;
+}
+
+#cards button:hover {
+  background-color: #fab700;
+  color: #212121;
+  border: solid 0.17rem;
+  border-color: #212121;
+}
+
+#card-right button {
+  background: #fab700;
+  color: #212121;
+  border: solid 0.17rem;
+}
+
+#card-right button:hover {
+  background: #212121;
+  color: #fff;
+}
+
+#card-left button:hover {
+  background: #212121;
+  color: #fff;
+}
+
+
+#card-gb {
+  width: 35vw;
+  background: #fff;
+  background-size: 100%;
+  color: #212121;
+  border: solid 0.4rem;
+  border-radius: 0.4rem;
+  border-color: #212121;
+  margin: 5vw;
+  padding: 5vw 2vw;
+  opacity: 0.8;
+  text-align: center;
+  align-items: center;
+  word-wrap: break-word;
+}
+#card-gb:hover {
+  opacity: 1;
+}
+
+#card-gb button:hover {
+  background: #212121;
+  color: #fff;
+}
+
+
+/* Footer section */
+
+#rss {
+  min-height: 30vh;
+  color: #fff;
+  padding: 2vw 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+#rss h3 {
+  font-size: 2rem;
+  padding: 1rem 0rem;
+}
+
+#rss label {
+  font-size: 1.6rem;
+}
+
+.social-media {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  min-height: 20vh;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.social-media div {
+  margin: 0vw 4vw;
+}
+
+.social-media input,
+.social-media .fab {
+  cursor: pointer;
+}
+
+#social-media-subscribe {
+  max-width: 35vw;
+}
+
+/* Media query */
+
+@media screen and (max-width: 780px) {
+  body {
+    width: 100%;
+    padding: 2vw 0vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    font-size: 45%;
+  }
+
+  header,
+  section,
+  footer,
+  #cards {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: left;
+    flex-wrap: wrap;
+  }
+
+  #hero button,
+  #download button {
+    width: 40vw;
+    align-items: center;
+  }
+
+  #card-left,
+  #card-right {
+    width: 90vw;
+  }
+}
+
+
+
+/* Contenedor del popup */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* pop-up actual */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Muestra del Pop-up*/
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Cambio para mostrar/ocultar el contenedor del pop-up */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Animación del pop-up */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

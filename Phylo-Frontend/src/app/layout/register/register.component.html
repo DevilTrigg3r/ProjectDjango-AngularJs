@@ -1,0 +1,35 @@
+<h1>Sing Up</h1>
+<div class="container">
+  <form class="example-form" #registerForm="ngForm" (ngSubmit)="submitForm(registerForm.value)">
+    <div class="example-full-width">
+      <label>Name</label>
+      <input matInput ngModel name="name" placeholder="Peter" value="{{name}}">
+    </div>
+    <div class="example-full-width">
+      <label>Surnames</label>
+      <input matInput ngModel name="surname" placeholder="Benjamin Parker" value="{{surname}}">
+    </div>
+    <div class="example-full-width">
+      <label>Username</label>
+      <input matInput ngModel name="username" placeholder="bparker" value="{{username}}">
+    </div>
+    <div class="example-full-width">
+      <label>Mail</label>
+      <input matInput appEmail [(ngModel)]="mail" #mailCtrl="ngModel" name="mail" placeholder="example@domain.com" value="{{mail}}">
+      <small *ngIf="!mailCtrl?.pristine && mailCtrl?.errors?.isNotCorrect">Input a valid mail format</small>
+      </div>
+    <div class="example-full-width">
+      <label>Password</label>
+      <input matInput appPassword [(ngModel)]="password" #passwordCtrl="ngModel" name="password" placeholder="Pass123" value="{{password}}">
+      <small *ngIf="!passwordCtrl?.pristine && passwordCtrl?.errors?.isNotCorrect">Min length 8 and can use only letters and numbers</small>
+    </div>
+    <div class="example-full-width">
+      <label>Repeat Password</label>
+      <input matInput appPassword [(ngModel)]="password_repeat" #password_repeatCtrl="ngModel" name="password_repeat" placeholder="Pass123" value="{{password_repeat}}">
+      <small *ngIf="!password_repeatCtrl?.pristine && password_repeatCtrl?.errors?.isNotCorrect">Min length 8 and can use only letters and numbers</small>
+    </div>
+    <div class="buttons">
+      <button type="submit" [disabled]="!registerForm.valid">Submit</button>  
+    </div>
+  </form>
+</div>

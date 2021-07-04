@@ -1,0 +1,23 @@
+.container-portada{
+    width: 100%;
+    height: 200px;
+    background-image: url(/assets/images/adn.jpg);
+    background-size: 100%;
+    animation: move 20s infinite linear alternate;
+    position:relative
+  }
+  @keyframes move{
+    from{
+      background-position: bottom left;
+    }to{
+      background-position: top right;
+    }
+  }
+  
+  .capa-gradient{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: -webkit-linear-gradient(left,#7b7cc7, #52b2cf );
+    opacity: 0.5;
+  }

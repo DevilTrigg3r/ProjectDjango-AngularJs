@@ -1,0 +1,118 @@
+<ng-container *ngIf="userLoged">
+    <select  #mySelect (change)="onOptionsSelected(mySelect.value)">
+        <option>--</option>
+        <option *ngFor="let specie of species_list" value="{{specie.taxon_id}}">{{specie.colloquial_name}} - {{specie.scientific_name}}</option>
+    </select>
+    <div class="status"><h1>{{status}}</h1></div>
+    <ng-container *ngIf="orthologs.length > 0">
+        
+        <div class="summary">
+            
+            <ngx-charts-bar-vertical [results]="speciesDistance"
+            [view]="view"
+            [schemeType] = "schemeType"
+            [gradient] = "gradient"
+            [xAxis] = "xAxis"
+            [yAxis] = "yAxis"
+            [showXAxisLabel] = "showXAxisLabel"
+            [showYAxisLabel] = "showYAxisLabel"
+            [xAxisLabel] = "xAxisLabel"
+            [yAxisLabel] = "yAxisLabel1"
+            [animations] = "animations"
+            [showGridLines] = "showGridLines"
+            [showDataLabel] = "showDataLabel"
+            [barPadding] = "barPadding"
+            [tooltipDisabled] = "tooltipDisabled"
+            [roundEdges] = "roundEdges"
+            ></ngx-charts-bar-vertical>
+            <ngx-charts-bar-vertical [results]="speciesScore"
+            [view]="view"
+            [schemeType] = "schemeType"
+            [gradient] = "gradient"
+            [xAxis] = "xAxis"
+            [yAxis] = "yAxis"
+            [showXAxisLabel] = "showXAxisLabel"
+            [showYAxisLabel] = "showYAxisLabel"
+            [xAxisLabel] = "xAxisLabel"
+            [yAxisLabel] = "yAxisLabel2"
+            [animations] = "animations"
+            [showGridLines] = "showGridLines"
+            [showDataLabel] = "showDataLabel"
+            [barPadding] = "barPadding"
+            [tooltipDisabled] = "tooltipDisabled"
+            [roundEdges] = "roundEdges"
+            ></ngx-charts-bar-vertical>
+            <ngx-charts-bar-vertical [results]="speciesSeqLength"
+            [view]="view"
+            [schemeType] = "schemeType"
+            [gradient] = "gradient"
+            [xAxis] = "xAxis"
+            [yAxis] = "yAxis"
+            [showXAxisLabel] = "showXAxisLabel"
+            [showYAxisLabel] = "showYAxisLabel"
+            [xAxisLabel] = "xAxisLabel"
+            [yAxisLabel] = "yAxisLabel3"
+            [animations] = "animations"
+            [showGridLines] = "showGridLines"
+            [showDataLabel] = "showDataLabel"
+            [barPadding] = "barPadding"
+            [tooltipDisabled] = "tooltipDisabled"
+            [roundEdges] = "roundEdges"
+            ></ngx-charts-bar-vertical>
+    </div>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <h1>
+            {{chosen_specie}}
+        </h1>
+    </tr>
+    <tr>
+        <th>Entry number</th>
+        <th>Sequence Length</th>
+        <th>Taxon ID</th>
+        <th>Name</th>
+        <th>Chormosome</th>
+        <th>Distance</th>
+        <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Orthologs per page</td>
+        <td>
+            <input type="number" [(ngModel)]="itemsPerPage" name="itemsPerPage">
+        </td>
+        <td>Total: </td>
+        <td>
+            {{orthologs.length}}
+        </td>
+    </tr>
+    <tr>
+        <td>Filter by name</td>
+        <td>
+            <input type="text" [(ngModel)]="orthologName" name="orthologName" (keyup)="plots(orthologs)">
+        </td>
+    </tr>
+        <tr *ngFor="let ortholog of orthologs | 
+                paginate: {itemsPerPage: itemsPerPage, 
+                currentPage: page,
+                totalLength: totalLength} |
+                searchFilter: orthologName">
+            <td>{{ortholog.entry_nr}}</td>
+            <td>{{ortholog.sequence_length}}</td>
+            <td>{{ortholog.taxon_id}}</td>
+            <td>{{ortholog.species}}</td>
+            <td>{{ortholog.chromosome}}</td>
+            <td>{{ortholog.distance}}</td>
+            <td>{{ortholog.score}}</td>
+        </tr>
+    
+    </tbody>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </table>
+    </ng-container>    
+</ng-container>
+<ng-container *ngIf="!userLoged">
+    <h1>Log in to have access to this area</h1>
+</ng-container>

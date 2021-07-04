@@ -1,0 +1,10 @@
+<h1>Phylotree App</h1>
+<ng-container *ngIf="userLoged">
+  <button (click)="logout()">Log out</button>
+  <div *ngIf="userLoged">
+    Welcome, {{userName}} {{userSurname}}
+  </div>
+</ng-container>
+<div id="divHolaMundo"></div>
+
+<hr>

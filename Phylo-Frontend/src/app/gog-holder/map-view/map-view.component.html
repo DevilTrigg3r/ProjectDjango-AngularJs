@@ -1,0 +1,6 @@
+<div *ngFor="let specie of species">
+    <p class="alert alert-warning" role="alert" *ngIf="!specie.finished">Retriveving markers of {{specie.scientific_name}}, please wait...</p>
+  </div>
+<div class="map-frame">
+    <div id="map"></div>
+</div>

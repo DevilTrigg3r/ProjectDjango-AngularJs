@@ -1,0 +1,19 @@
+<h1>Sing In</h1>
+<div class="container">
+  <form [formGroup]="loginForm" class="example-form" (ngSubmit)="submitForm(loginForm.value)" *ngIf="!userLoged">
+    <form-field class="example-full-width">
+      <label>Username</label>
+      <input matInput formControlName="username" name="username" placeholder="example@domain.com">
+      </form-field>
+    <form-field class="example-full-width">
+      <label>Password</label> 
+      <input matInput formControlName="password" type="password" name="password" placeholder="Pass123">
+    </form-field>
+    <div class="buttons">
+      <button type="submit">Submit</button>  
+    </div>
+  </form>
+  <div *ngIf="userLoged">
+    You are apready logged, please log out to enter with an other account.
+  </div>
+</div>

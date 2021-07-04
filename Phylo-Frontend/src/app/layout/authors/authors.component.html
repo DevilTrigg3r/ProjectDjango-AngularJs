@@ -1,0 +1,13 @@
+<ng-container *ngIf="userLoged">
+    <label for="">Display graph with names </label>
+    <input id="checkbox" type="checkbox" name="show_names" [(ngModel)]="isChecked" value="{{isChecked}}" (click)="display_graph()">
+    <div id="graph" style="width:80%;"></div>
+</ng-container>
+<ng-container *ngIf="!userLoged">
+    <h1>Log in to have access to this area</h1>
+</ng-container>
+
+
+
+
+

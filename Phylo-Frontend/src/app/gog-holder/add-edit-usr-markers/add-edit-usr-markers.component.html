@@ -1,0 +1,91 @@
+<form #formValidator="ngForm">
+    <div class="form-froup row grid-two-columns">
+        <div>
+            <label for="specieField">Specie: </label>
+            <select name="specieField" [(ngModel)]="tmpMarker.specie_id" 
+            #validateSpecie="ngModel" appValidateInteger>
+                <option *ngFor="let specie of (speciesNamesAndIds$  | async)" value="{{specie.specie_id}}">{{specie.scientific_name}}</option>
+            </select>
+            <div *ngIf="(validateSpecie.touched ||!validateSpecie.pristine) && validateSpecie?.errors?.validate">
+                <p class="text-danger">The specie id must be an integer. Don't modify the input.</p>
+            </div>
+        </div>
+    
+        <div>
+            <label for="latitudeField">Latitude: </label>
+            <input type="number" step="any" name="latitudeField" id="latitudeField" [(ngModel)]="tmpMarker.latitude"
+            #validateLatitude="ngModel" appValidateLatitude>
+            <div *ngIf="(validateLatitude.touched || !validateLatitude.pristine) && validateLatitude?.errors?.validate">
+                <p class="text-danger">The latitude must be between 90 and -90 degrees.</p>
+            </div>
+        </div>
+
+        <div>
+            <label for="longitudeField">Longitude: </label>
+            <input type="number" step="any" name="longitudeField" id="longitudeField" [(ngModel)]="tmpMarker.longitude"
+            #validateLongitude="ngModel" appValidateLongitude>
+            <div *ngIf="(validateLongitude.touched || !validateLongitude.pristine) && validateLongitude?.errors?.validate">
+                <p class="text-danger">The longitude must be between 180 and -180 degrees.</p>
+            </div>
+        </div>
+    
+        <div>
+            <label for="dateField">Date: </label>
+            <input type="date" name="dateField" id="dateField" [(ngModel)]="tmpMarker.date"
+            #validateDate="ngModel" appValidateDate>
+            <div *ngIf="(validateDate.touched || !validateDate.pristine) && validateDate?.errors?.validate">
+                <p class="text-danger">The date must be correct and meet the following pattern: YYYY-MM-DD.</p>
+            </div>
+        </div>
+    
+        <div>
+            <label for="hourField">Time: </label>
+            <input type="time" name="hourField" id="hourField" step="1"
+            [(ngModel)]="tmpMarker.hour"
+            #validateTime="ngModel" appValidateTime>
+            <div *ngIf="(validateTime.touched || !validateTime.pristine) && validateTime?.errors?.validate">
+                <p class="text-danger">The time must be correct and meet the following pattern: HH:MM:SS.</p>
+            </div>
+        </div>
+    
+        <div>
+            <label for="countryField">Country code: </label>
+            <input type="text" name="countryField" id="countryField" [(ngModel)]="tmpMarker.country"
+            #validateCountryCode="ngModel" appValidateCountryCode>
+            <div *ngIf="(validateCountryCode.touched || !validateCountryCode.pristine) && validateCountryCode?.errors?.validate">
+                <p class="text-danger">The country code must a uppercased string of two character length.</p>
+            </div>
+        </div>
+    
+        <div>
+            <label for="stateField">State: </label>
+            <input type="text" name="stateField" id="stateField" [(ngModel)]="tmpMarker.state"
+            #validateState="ngModel" appValidateString>
+            <div *ngIf="(validateState.touched || !validateState.pristine) && validateState?.errors?.validate">
+                <p class="text-danger">The state must be a string.</p>
+            </div>
+        </div>
+        <div class="two-columns-width">
+            <p>Change only if you know what you're doing</p>
+            <hr>
+        </div>
+    
+        <div>
+            <label for="identificationIdField" data-tip="If you are using a Gbif marker, you can identify it with its identifier">Identification ID: 
+            </label>
+            <input type="number" name="identificationIdField" id="identificationIdField"
+            [(ngModel)]="tmpMarker.identification_id">
+        </div>
+    
+        <div>
+            <label for="datasetKeyField" data-tip="If you are using a Gbif marker, you can identify it with its dataset key.">Dataset key: 
+            </label>
+            <input type="text" name="datasetKeyField" id="datasetKeyField" [(ngModel)]="tmpMarker.dataset_key">
+        </div>
+    
+        <div>
+            <button [disabled]="!formValidator.valid" (click)="updateMarker()" *ngIf="checkIfMarkerIdIsInteger()" class="btn btn-primary">Update</button>
+            <button [disabled]="!formValidator.valid" (click)="addMarker()" *ngIf="tmpMarker.marker_id == null" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>

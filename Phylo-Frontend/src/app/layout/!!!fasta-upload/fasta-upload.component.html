@@ -1,0 +1,9 @@
+<h1>Upload Fasta</h1>
+<div class="container">
+    <form #fastaForm="ngForm" (ngSubmit)="submitForm(fastaForm)">
+            <input type="text" hidden id="{{randInt}}" class="hidden">
+            <input required id="file" #file="ngModel" type="file" name="file" [(ngModel)]="fastaFile" (change)="onFileSelected($event)">
+                <small *ngIf="isFasta == false">Invalid extensio file. Only .fasta allowed</small>
+                <button [(disabled)]="!fastaForm.form.valid || !isFasta">Submit</button>
+    </form>
+</div>

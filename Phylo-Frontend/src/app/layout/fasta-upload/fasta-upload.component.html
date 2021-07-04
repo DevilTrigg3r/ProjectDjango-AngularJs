@@ -1,0 +1,13 @@
+<ng-container *ngIf="userLoged">
+    <div class="container">
+        <form #fastaForm="ngForm" (ngSubmit)="submitForm(fastaForm)">
+                <input type="text" hidden id="{{randInt}}" class="hidden">
+                <input required id="file" type="file" name="file" (change)="onFileSelected($event)">
+                    <small *ngIf="isFasta == false">Invalid extensio file. Only .fasta allowed</small>
+                    <button [(disabled)]="!fastaForm?.form?.valid || !isFasta">Submit</button>
+        </form>
+    </div>
+</ng-container>
+<ng-container *ngIf="!userLoged">
+    <h1>Log in to have access to this area</h1>
+</ng-container>

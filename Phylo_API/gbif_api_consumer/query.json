@@ -1,0 +1,11 @@
+{
+  "creator":"robertomg",
+  "notificationAddresses": ["robertomartinezgorila@gmail.com"],
+  "format": "SIMPLE_CSV",
+  "predicate":
+  {
+    "type":"equals",
+    "key":"TAXON_KEY",
+    "value":"53000000"
+  }
+} 
